@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "SynapseWorkKit",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17),
+        .macCatalyst(.v17)
     ],
     products: [
         .library(name: "WorkCore", targets: ["WorkCore"]),
