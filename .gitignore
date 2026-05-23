@@ -1,0 +1,17 @@
+.DS_Store
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+xcuserdata/
+DerivedData/
+build/
+.swiftpm/
+Packages/*/.build/
+*.swp
+.idea/
+.vscode/
+
+# XcodeGen output — regenerated from project.yml
+SynapseWork.xcodeproj/
+SynapseWork.xcworkspace/contents.xcworkspacedata
+SynapseWork.xcworkspace/xcshareddata/
