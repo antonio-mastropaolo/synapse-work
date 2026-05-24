@@ -5,43 +5,78 @@ let package = Package(
     name: "SynapseWorkKit",
     platforms: [
         .iOS(.v17),
-        .macCatalyst(.v17)
+        .macCatalyst(.v17),
+        .macOS(.v14)
     ],
     products: [
-        .library(name: "WorkCore", targets: ["WorkCore"]),
-        .library(name: "WorkUI", targets: ["WorkUI"]),
-        .library(name: "WorkRepositories", targets: ["WorkRepositories"]),
-        .library(name: "WorkFeatures", targets: ["WorkFeatures"])
+        .library(name: "Models", targets: ["Models"]),
+        .library(name: "Networking", targets: ["Networking"]),
+        .library(name: "Auth", targets: ["Auth"]),
+        .library(name: "Persistence", targets: ["Persistence"]),
+        .library(name: "Connectors", targets: ["Connectors"]),
+        .library(name: "Intelligence", targets: ["Intelligence"]),
+        .library(name: "DesignSystem", targets: ["DesignSystem"]),
+        .library(name: "Charts", targets: ["SynapseWorkCharts"]),
+        .library(name: "Features", targets: ["Features"]),
+        .library(name: "AppLifecycle", targets: ["AppLifecycle"]),
+        .library(name: "Tools", targets: ["Tools"])
     ],
     targets: [
+        .target(name: "Models", path: "Sources/Models"),
         .target(
-            name: "WorkCore",
-            path: "Sources/WorkCore"
+            name: "Networking",
+            dependencies: ["Models"],
+            path: "Sources/Networking"
         ),
         .target(
-            name: "WorkUI",
-            dependencies: ["WorkCore"],
-            path: "Sources/WorkUI"
+            name: "Auth",
+            dependencies: ["Models", "Networking"],
+            path: "Sources/Auth"
         ),
         .target(
-            name: "WorkRepositories",
-            dependencies: ["WorkCore"],
-            path: "Sources/WorkRepositories"
+            name: "Persistence",
+            dependencies: ["Models"],
+            path: "Sources/Persistence"
         ),
         .target(
-            name: "WorkFeatures",
-            dependencies: ["WorkCore", "WorkUI", "WorkRepositories"],
-            path: "Sources/WorkFeatures"
+            name: "Connectors",
+            dependencies: ["Models", "Networking", "Persistence"],
+            path: "Sources/Connectors"
+        ),
+        .target(
+            name: "Intelligence",
+            dependencies: ["Models", "Networking", "Persistence"],
+            path: "Sources/Intelligence"
+        ),
+        .target(name: "DesignSystem", path: "Sources/DesignSystem"),
+        .target(
+            name: "SynapseWorkCharts",
+            dependencies: ["DesignSystem"],
+            path: "Sources/Charts"
+        ),
+        .target(
+            name: "Features",
+            dependencies: ["Models", "Networking", "DesignSystem", "Auth", "Persistence", "SynapseWorkCharts"],
+            path: "Sources/Features"
+        ),
+        .target(
+            name: "Tools",
+            path: "Sources/Tools"
+        ),
+        .target(
+            name: "AppLifecycle",
+            dependencies: ["Models", "Networking", "Auth", "DesignSystem", "Features", "Persistence", "Intelligence"],
+            path: "Sources/AppLifecycle"
         ),
         .testTarget(
-            name: "WorkCoreTests",
-            dependencies: ["WorkCore"],
-            path: "Tests/WorkCoreTests"
+            name: "ModelsTests",
+            dependencies: ["Models"],
+            path: "Tests/ModelsTests"
         ),
         .testTarget(
-            name: "WorkRepositoriesTests",
-            dependencies: ["WorkRepositories", "WorkCore"],
-            path: "Tests/WorkRepositoriesTests"
+            name: "PersistenceTests",
+            dependencies: ["Persistence", "Models"],
+            path: "Tests/PersistenceTests"
         )
     ],
     swiftLanguageModes: [.v6]

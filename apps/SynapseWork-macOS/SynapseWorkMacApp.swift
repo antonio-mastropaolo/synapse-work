@@ -3,7 +3,7 @@ import Models
 import DesignSystem
 import Features
 @main
-struct SynapseWorkApp: App {
+struct SynapseWorkMacApp: App {
     @State private var authState = AuthState()
 
     var body: some Scene {
@@ -12,6 +12,11 @@ struct SynapseWorkApp: App {
                 .environment(authState)
                 .preferredColorScheme(.dark)
                 .tint(Theme.accent)
+                .frame(minWidth: 1100, minHeight: 720)
+        }
+        .windowToolbarStyle(.unifiedCompact)
+        .commands {
+            CommandGroup(replacing: .newItem) {}
         }
     }
 }
@@ -19,7 +24,6 @@ struct SynapseWorkApp: App {
 @Observable
 @MainActor
 final class AuthState {
-    // M1: stubbed signed-in. Real SIWA flow wires up once /api/auth/apple is server-side.
     var isSignedIn: Bool = true
 }
 
