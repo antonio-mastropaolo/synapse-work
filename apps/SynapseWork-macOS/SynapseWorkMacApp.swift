@@ -26,8 +26,11 @@ struct SynapseWorkMacApp: App {
                 }
         }
         .windowToolbarStyle(.unifiedCompact)
+        .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .newItem) {}
+            MacSurfacesCommandMenu()
+            MacSidebarCommands()
         }
     }
 
@@ -54,7 +57,11 @@ struct RootView: View {
 
     var body: some View {
         if session.isSignedIn {
+            #if os(macOS)
+            RootShellMac()
+            #else
             RootShell()
+            #endif
         } else {
             SignInScreen(session: session, auth: auth)
         }

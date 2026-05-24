@@ -87,6 +87,11 @@ let package = Package(
             name: "NetworkingTests",
             dependencies: ["Networking", "Auth", "Models"],
             path: "Tests/NetworkingTests"
+        ),
+        .testTarget(
+            name: "FeaturesTests",
+            dependencies: ["Features", "Models", "DesignSystem"],
+            path: "Tests/FeaturesTests"
         )
     ],
     swiftLanguageModes: [.v6]
