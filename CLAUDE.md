@@ -14,7 +14,7 @@ Capacitor. The native idiom wins on every surface.
 Surfaces hosted here: Spotlight, Approvals, Inbox, Sequences, People,
 Reviews, Conferences, Cost, Ask, Timeline, Shell, Settings. **Private-life
 surfaces** (personal finance, life-log, advisors) live in the sibling
-[`synapse`](https://github.com/antonio-mastropaolo/synapse) repo — do not
+[`synapse-life`](https://github.com/antonio-mastropaolo/synapse-life) repo — do not
 port them here.
 
 ## Hard rules
@@ -42,7 +42,7 @@ port them here.
 
 ## Module boundaries
 
-Mirrors the layout of sibling [`synapse`](https://github.com/antonio-mastropaolo/synapse):
+Mirrors the layout of sibling [`synapse-life`](https://github.com/antonio-mastropaolo/synapse-life):
 
 - `Networking` owns transport. It does not know about persistence or UI.
 - `Auth` owns the keychain. It does not call the network.

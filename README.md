@@ -1,7 +1,7 @@
 # synapse-work
 
 Native SwiftUI iOS/iPadOS client for the **work** half of the Synapse productivity stack.
-The personal-life half ships separately as [`synapse`](https://github.com/antonio-mastropaolo/synapse).
+The personal-life half ships separately as [`synapse-life`](https://github.com/antonio-mastropaolo/synapse-life).
 
 Both clients consume the same Next.js backend at `synapse-v2`.
 
